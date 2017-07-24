@@ -1,0 +1,22 @@
+{
+  "name": "classNames",
+  "version": "1.0.0",
+  "description": "Simple utility for combining DOM classes into a single class name",
+  "main": "index.js",
+  "dependencies": {
+    "isarray": "^2.0.2",
+    "isobject": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iliyanyotov/classNames.git"
+  },
+  "author": "Iliyan Yotov <iliyan.yotov@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iliyanyotov/classNames/issues"
+  },
+  "homepage": "https://github.com/iliyanyotov/classNames#readme"
+}
