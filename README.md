@@ -14,18 +14,20 @@ import classNames from 'classNames';
 
 ## Format
 ```js
-var className = classNames(baseClass, ...modifiers)
+var className = classNames(baseClass, ...modifiers);
 ```
 
 ## Examples
 
 ```js
-classNames('button', 'white')
+classNames('button', 'white');
+ 
 //=> 'button button--white'
 ```
 
 ```js
-classNames('button', 4)
+classNames('button', 4);
+ 
 //=> 'button button--4'
 ```
 
@@ -33,7 +35,8 @@ classNames('button', 4)
 classNames('button', {
   'active': false,
   'disabled': true
-})
+});
+ 
 //=> 'button button--disabled'
 ```
 
@@ -41,7 +44,8 @@ classNames('button', {
 classNames('button', [
   'blue',
   'disabled'
-])
+]);
+ 
 //=> 'button button--blue button--disabled'
 ```
 
@@ -50,7 +54,8 @@ classNames('button', [
   undefined,
   null,
   NaN
-])
+]);
+ 
 //=> 'button'
 ```
 
