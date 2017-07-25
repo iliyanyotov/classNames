@@ -4,7 +4,7 @@
   "description": "Simple utility for combining DOM class names and converting them to BEM modifiers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,9 @@
   "dependencies": {
     "isarray": "^2.0.2",
     "isobject": "^3.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2",
+    "should": "^11.2.1"
   }
 }

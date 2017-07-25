@@ -47,16 +47,23 @@ classNames('button', [
 
 ```js
 classNames('button', [
+  undefined,
   null,
-  undefined
+  NaN
 ])
 //=> 'button'
 ```
 
-The original idea for the utility without the modifiers comes from JedWatson.
+## Tests
+
+To run the tests with mocha use:
+
+```js
+npm test
+```
+
+## Idea
+
+The original idea for the utility without the BEM modifiers comes from JedWatson.
 https://github.com/JedWatson/classnames
 
-##TODO
-
-1. Add tests for the package
-2. Work on the documentation

@@ -3,19 +3,30 @@
 var isArray = require('isarray');
 var isObject = require('isobject');
 
+var isString = function (value) {
+  return typeof value === 'string';
+};
+
+var isNumber = function (value) {
+  return typeof value === 'number';
+};
+
 var hasOwnProperty = function (obj, key) {
   return Object.hasOwnProperty.call(obj, key)
 };
 
-var classNames = function (baseClass) {
+var isTruthy = function (value) {
+  return !!value;
+};
+
+module.exports = function (baseClass) {
   var modifiers = Array.prototype.slice.call(arguments, 1);
-  var modifiersCount = modifiers.length;
+
+  if (!isString(baseClass)) return '';
+  if (!modifiers.length) return baseClass;
 
   var key;
-  var classes = [];
-
-  if (baseClass) classes.push(baseClass);
-  if (!modifiersCount) return classes;
+  var classes = [ baseClass ];
 
   var constructModifier = function (modifier) {
     if (baseClass) {
@@ -26,15 +37,12 @@ var classNames = function (baseClass) {
   };
 
   modifiers.forEach(function (modifier) {
-    if (
-      typeof modifier === 'number' ||
-      typeof modifier === 'string'
-    ) {
+    if (isString(modifier) || isNumber(modifier)) {
       classes.push(constructModifier(modifier))
     } else if (isArray(modifier)) {
-      classes = classes.concat(modifier.filter(function (item) { return item }).map((function (item) {
-        return constructModifier(item)
-      })))
+      classes = classes.concat(
+        modifier.filter(isTruthy).map(constructModifier)
+      )
     } else if (isObject(modifier)) {
       for (key in modifier) {
         if (hasOwnProperty(modifier, key) && modifier[key]) {
@@ -46,5 +54,3 @@ var classNames = function (baseClass) {
 
   return classes.join(' ')
 };
-
-module.exports = classNames;
