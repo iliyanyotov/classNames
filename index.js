@@ -7,28 +7,42 @@ var hasOwnProperty = function (obj, key) {
   return Object.hasOwnProperty.call(obj, key)
 };
 
-var classNames = function () {
-  var argsCount = arguments.length;
+var classNames = function (baseClass) {
+  var modifiers = Array.prototype.slice.call(arguments, 1);
+  var modifiersCount = modifiers.length;
 
-  if (!argsCount) return '';
+  var key;
+  var classes = [];
 
-  var argIndex, key, argument, classes = [];
+  if (baseClass) classes.push(baseClass);
+  if (!modifiersCount) return classes;
 
-  for (argIndex = 0; argIndex < argsCount; argIndex++) {
-    argument = arguments[argIndex];
+  var constructModifier = function (modifier) {
+    if (baseClass) {
+      return baseClass + '--' + modifier;
+    } else {
+      return modifier;
+    }
+  };
 
-    if (typeof argument === 'number' || typeof argument === 'string') {
-      classes.push(argument)
-    } else if (isArray(argument)) {
-      classes = classes.concat(argument)
-    } else if (isObject(argument)) {
-      for (key in argument) {
-        if (hasOwnProperty(argument, key) && argument[key]) {
-          classes.push(key)
+  modifiers.forEach(function (modifier) {
+    if (
+      typeof modifier === 'number' ||
+      typeof modifier === 'string'
+    ) {
+      classes.push(constructModifier(modifier))
+    } else if (isArray(modifier)) {
+      classes = classes.concat(modifier.filter(function (item) { return item }).map((function (item) {
+        return constructModifier(item)
+      })))
+    } else if (isObject(modifier)) {
+      for (key in modifier) {
+        if (hasOwnProperty(modifier, key) && modifier[key]) {
+          classes.push(constructModifier(key))
         }
       }
     }
-  }
+  });
 
   return classes.join(' ')
 };

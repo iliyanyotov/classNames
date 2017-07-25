@@ -1,22 +1,23 @@
 {
-  "name": "classNames",
+  "name": "classnames-bem",
   "version": "1.0.0",
-  "description": "Simple utility for combining DOM classes into a single class name",
+  "description": "Simple utility for combining DOM class names and converting them to BEM modifiers",
   "main": "index.js",
-  "dependencies": {
-    "isarray": "^2.0.2",
-    "isobject": "^3.0.1"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {},
-  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iliyanyotov/classNames.git"
+    "url": "git+https://github.com/iliyanyotov/classnames-bem.git"
   },
   "author": "Iliyan Yotov <iliyan.yotov@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iliyanyotov/classNames/issues"
+    "url": "https://github.com/iliyanyotov/classnames-bem/issues"
   },
-  "homepage": "https://github.com/iliyanyotov/classNames#readme"
+  "homepage": "https://github.com/iliyanyotov/classnames-bem#readme",
+  "dependencies": {
+    "isarray": "^2.0.2",
+    "isobject": "^3.0.1"
+  }
 }
